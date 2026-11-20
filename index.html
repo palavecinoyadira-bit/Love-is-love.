@@ -1,252 +1,438 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff0f5">
-  <meta name="description" content="Una pequeña sorpresa para Anyi.">
+  <meta name="theme-color" content="#8d174b">
   <title>Para Anyi ♡</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <div class="background-glow"></div>
-  <div id="particles"></div>
+  <div class="ambient">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="stars" id="stars"></div>
+    <div class="floating-petals" id="petals"></div>
+  </div>
 
   <main id="app">
 
     <!-- PORTADA -->
-
-    <section id="welcome" class="screen active">
-
-      <div class="floating-heart">♡</div>
-      <div class="welcome-flower">✿</div>
-
-      <span class="eyebrow">UNA PEQUEÑA SORPRESA</span>
-
-      <h1>
-        Tengo algo<br>
-        que preguntarte<span>...</span>
-      </h1>
-
-      <p>Preparé algunas cositas para vos.</p>
-
-      <button class="main-button" onclick="startExperience()">
-        Descubrir <span>♡</span>
-      </button>
-
-      <div class="bottom-decoration">
-        hecho con cariño ♡
+    <section class="screen active" id="home">
+      <div class="home-top">
+        <span class="eyebrow">UN DETALLE PARA VOS</span>
+        <span class="tiny-heart">♡</span>
       </div>
 
+      <div class="home-content">
+        <div class="crown-decoration">✧</div>
+
+        <p class="script-line">Para alguien especial</p>
+
+        <h1>¿Me perdonás,<br><em>Anyi?</em></h1>
+
+        <div class="ornament">
+          <span></span>
+          <b>♡</b>
+          <span></span>
+        </div>
+
+        <p class="home-description">
+          Preparé algo para vos.<br>
+          Hay algunas cositas que quiero mostrarte.
+        </p>
+
+        <button class="primary-button" onclick="enterGarden()">
+          <span>Entrar</span>
+          <span class="button-arrow">↗</span>
+        </button>
+      </div>
+
+      <div class="home-bottom">
+        <span>HECHO CON CARIÑO</span>
+        <span>✦</span>
+        <span>PARA ANYI</span>
+      </div>
     </section>
 
 
-    <!-- EXPERIENCIA PRINCIPAL -->
+    <!-- MENÚ PRINCIPAL -->
+    <section class="screen" id="garden">
+      <header class="screen-header">
+        <button class="back-button" onclick="goHome()" aria-label="Volver">←</button>
+        <span class="header-label">UN PEQUEÑO UNIVERSO</span>
+        <span class="header-heart">♡</span>
+      </header>
 
-    <section id="experience" class="screen">
+      <div class="garden-content">
+        <p class="script-line">Elegí por dónde empezar</p>
+        <h2>Unas cositas<br><em>para vos</em></h2>
 
-      <div class="top-label">
-        UNA PREGUNTA PARA VOS
-      </div>
-
-      <div id="scene" class="scene">
-
-        <!-- ROSA 3D -->
-
-        <div id="rose-scene" class="visual">
-
-          <div id="rose3d"></div>
-
-          <div class="rose-caption">
-            Una flor para vos
-          </div>
-
-          <p class="hint">
-            Tocá la rosa para verla abrirse
-          </p>
-
-        </div>
-
-
-        <!-- CARTA -->
-
-        <div id="letter-scene" class="visual hidden">
-
-          <div class="envelope" onclick="openLetter()">
-
-            <div class="envelope-back"></div>
-
-            <div class="letter-paper" id="letter-paper">
-
-              <span>Para mi reina ♡</span>
-
-              <p>
-                Hay algo que quiero preguntarte...
-              </p>
-
-            </div>
-
-            <div class="envelope-flap"></div>
-            <div class="envelope-front"></div>
-
-            <div class="envelope-seal">♡</div>
-
-          </div>
-
-          <p class="hint">
-            Tocá el sobre para abrirlo
-          </p>
-
-        </div>
-
-
-        <!-- REGALO -->
-
-        <div id="gift-scene" class="visual hidden">
-
-          <div class="gift" onclick="openGift()">
-
-            <div class="gift-lid">
-              <div class="gift-bow">♡</div>
-            </div>
-
-            <div class="gift-box">
-              <div class="gift-ribbon"></div>
-            </div>
-
-          </div>
-
-          <p class="hint">
-            Hay algo escondido acá...
-          </p>
-
-        </div>
-
-
-        <!-- CORAZÓN -->
-
-        <div id="heart-scene" class="visual hidden">
-
-          <div class="big-heart" onclick="heartSurprise()">
-            ♥
-          </div>
-
-          <p class="hint">
-            Tocame ♡
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- PREGUNTA -->
-
-      <div class="question-card">
-
-        <span class="question-number" id="question-number">
-          01
-        </span>
-
-        <h2 id="question">
-          ¿Me perdonas, Anyi?
-        </h2>
-
-        <p id="question-subtitle">
-          Tengo algo que decirte, mi reina.
+        <p class="garden-description">
+          Cada detalle guarda una pequeña sorpresa.
         </p>
 
-        <div class="answer-buttons">
+        <div class="object-grid">
 
-          <button class="yes-button" onclick="forgive()">
-            Sí, te perdono ♡
+          <button class="object-card rose-card" onclick="openScene('rose')">
+            <div class="object-art rose-art">
+              <svg viewBox="0 0 180 190" class="rose-svg" aria-label="Rosa">
+                <defs>
+                  <radialGradient id="petalA" cx="35%" cy="25%">
+                    <stop offset="0%" stop-color="#ffb0c9"/>
+                    <stop offset="55%" stop-color="#ed397c"/>
+                    <stop offset="100%" stop-color="#94113f"/>
+                  </radialGradient>
+                  <radialGradient id="petalB" cx="35%" cy="25%">
+                    <stop offset="0%" stop-color="#ffd0df"/>
+                    <stop offset="60%" stop-color="#f45b91"/>
+                    <stop offset="100%" stop-color="#a9164d"/>
+                  </radialGradient>
+                  <linearGradient id="stem" x1="0" x2="1">
+                    <stop stop-color="#316e4c"/>
+                    <stop offset="50%" stop-color="#80b879"/>
+                    <stop offset="100%" stop-color="#24543d"/>
+                  </linearGradient>
+                </defs>
+
+                <path d="M88 92 Q91 135 94 183" stroke="url(#stem)" stroke-width="7" fill="none" stroke-linecap="round"/>
+                <path d="M91 143 Q47 112 35 137 Q59 160 91 143Z" fill="#4d9a66"/>
+                <path d="M93 158 Q126 122 148 139 Q129 164 93 158Z" fill="#397e52"/>
+                <path d="M55 132 Q73 140 88 145" stroke="#a4d38b" stroke-width="2" fill="none"/>
+                <path d="M109 151 Q126 143 139 142" stroke="#a4d38b" stroke-width="2" fill="none"/>
+
+                <g class="rose-bloom">
+                  <path class="petal outer" d="M89 91 C40 99 24 60 47 30 C61 10 85 22 90 46 C98 16 127 11 143 35 C164 67 129 98 89 91Z" fill="url(#petalA)"/>
+                  <path class="petal outer-two" d="M89 87 C47 76 42 39 68 26 C87 16 101 34 96 55 C119 29 144 43 139 65 C134 88 107 95 89 87Z" fill="url(#petalB)"/>
+                  <path class="petal middle" d="M89 82 C56 78 57 48 76 39 C89 32 101 48 96 62 C112 39 131 54 121 72 C113 87 98 89 89 82Z" fill="#d92768"/>
+                  <path class="petal inner" d="M89 78 C73 68 77 48 90 49 C103 49 105 65 96 74 C113 62 119 77 105 84 C98 88 91 84 89 78Z" fill="#ff91b5"/>
+                  <path class="petal center" d="M91 74 C83 64 91 57 98 63 C105 69 98 78 91 74Z" fill="#ffbed1"/>
+                  <path d="M52 47 Q63 27 78 37" stroke="#ffd1df" stroke-width="2" opacity=".6" fill="none"/>
+                  <path d="M113 31 Q133 36 133 54" stroke="#ffd1df" stroke-width="2" opacity=".5" fill="none"/>
+                </g>
+              </svg>
+            </div>
+            <span class="object-name">Una rosa</span>
+            <span class="object-subtitle">Un detalle para vos</span>
+            <span class="object-arrow">↗</span>
           </button>
 
-          <button class="no-button" onclick="nextSurprise()">
-            Todavía no...
+          <button class="object-card gift-card" onclick="openScene('gift')">
+            <div class="object-art gift-art">
+              <div class="gift">
+                <div class="gift-lid">
+                  <div class="ribbon-loop left"></div>
+                  <div class="ribbon-loop right"></div>
+                  <div class="ribbon-knot"></div>
+                </div>
+                <div class="gift-box">
+                  <div class="gift-ribbon"></div>
+                  <div class="gift-shine"></div>
+                </div>
+              </div>
+            </div>
+            <span class="object-name">Un regalo</span>
+            <span class="object-subtitle">¿Qué habrá adentro?</span>
+            <span class="object-arrow">↗</span>
+          </button>
+
+          <button class="object-card letter-card" onclick="openScene('letter')">
+            <div class="object-art letter-art">
+              <div class="envelope">
+                <div class="envelope-back"></div>
+                <div class="letter-paper">
+                  <span>Para vos</span>
+                  <b>♡</b>
+                  <i></i><i></i><i></i>
+                </div>
+                <div class="envelope-front"></div>
+                <div class="wax-seal">♡</div>
+              </div>
+            </div>
+            <span class="object-name">Una carta</span>
+            <span class="object-subtitle">Algo que quiero decirte</span>
+            <span class="object-arrow">↗</span>
+          </button>
+
+          <button class="object-card secret-card" onclick="openScene('secret')">
+            <div class="object-art secret-art">
+              <div class="secret-orbit orbit-one"></div>
+              <div class="secret-orbit orbit-two"></div>
+              <div class="secret-crystal">✦</div>
+              <div class="secret-spark">✧</div>
+            </div>
+            <span class="object-name">Un secreto</span>
+            <span class="object-subtitle">Hay algo escondido</span>
+            <span class="object-arrow">↗</span>
           </button>
 
         </div>
 
+        <div class="question-panel">
+          <span class="question-small">Y ANTES DE QUE TE VAYAS...</span>
+          <h3>¿Me perdonás?</h3>
+          <p>No tenés que responder ahora.</p>
+          <button class="text-button" onclick="openScene('final')">
+            Sí, te perdono ♡
+          </button>
+          <button class="soft-button" onclick="notYet()">
+            Todavía no...
+          </button>
+        </div>
       </div>
+    </section>
 
 
-      <div class="explore-label">
-        También podés tocar los objetos para descubrir sorpresas
+    <!-- ROSA -->
+    <section class="screen detail-screen" id="rose">
+      <header class="screen-header">
+        <button class="back-button" onclick="openScene('garden')">←</button>
+        <span class="header-label">UN DETALLE PARA VOS</span>
+        <span class="header-heart">♡</span>
+      </header>
+
+      <div class="detail-content rose-detail">
+        <p class="script-line">Con mucho cariño</p>
+        <h2>Una rosa<br><em>para vos</em></h2>
+
+        <div class="large-rose-wrap" onclick="bloomRose()">
+          <div class="rose-halo"></div>
+          <svg viewBox="0 0 240 300" class="large-rose">
+            <defs>
+              <radialGradient id="bigPetal" cx="30%" cy="20%">
+                <stop offset="0%" stop-color="#ffc4d7"/>
+                <stop offset="45%" stop-color="#f34b8c"/>
+                <stop offset="100%" stop-color="#9b174d"/>
+              </radialGradient>
+              <radialGradient id="bigPetal2" cx="35%" cy="25%">
+                <stop offset="0%" stop-color="#ffe0e9"/>
+                <stop offset="60%" stop-color="#ee6799"/>
+                <stop offset="100%" stop-color="#b51e59"/>
+              </radialGradient>
+              <linearGradient id="bigStem" x1="0" x2="1">
+                <stop stop-color="#24543a"/>
+                <stop offset="45%" stop-color="#80b879"/>
+                <stop offset="100%" stop-color="#24543a"/>
+              </linearGradient>
+            </defs>
+
+            <path d="M117 147 Q119 213 128 286" stroke="url(#bigStem)" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <path d="M123 213 Q68 164 44 197 Q74 232 123 213Z" fill="#4e985f"/>
+            <path d="M125 243 Q169 190 199 215 Q172 249 125 243Z" fill="#347a4d"/>
+            <path d="M64 199 Q92 205 116 218" stroke="#a8d58c" stroke-width="3" fill="none"/>
+            <path d="M146 235 Q170 221 188 219" stroke="#a8d58c" stroke-width="3" fill="none"/>
+
+            <g class="big-bloom">
+              <path class="big-petal p1" d="M120 148 C52 158 19 105 43 51 C62 8 106 30 119 72 C130 19 180 8 204 53 C232 105 181 160 120 148Z" fill="url(#bigPetal)"/>
+              <path class="big-petal p2" d="M119 143 C60 123 56 65 91 43 C117 28 137 59 127 89 C157 44 199 70 183 111 C171 145 137 155 119 143Z" fill="url(#bigPetal2)"/>
+              <path class="big-petal p3" d="M120 139 C75 133 76 83 103 67 C125 55 141 81 131 105 C153 71 177 91 160 122 C147 145 129 149 120 139Z" fill="#df3476"/>
+              <path class="big-petal p4" d="M120 133 C92 118 94 84 114 81 C135 78 143 105 127 121 C151 104 164 127 143 140 C131 147 121 141 120 133Z" fill="#ff8db4"/>
+              <path class="big-petal p5" d="M122 125 C106 109 117 93 129 101 C144 111 135 132 122 125Z" fill="#ffd0df"/>
+              <path d="M53 73 Q70 35 99 52" stroke="#ffe0e9" stroke-width="3" opacity=".7" fill="none"/>
+              <path d="M165 42 Q198 52 195 82" stroke="#ffe0e9" stroke-width="3" opacity=".5" fill="none"/>
+            </g>
+          </svg>
+          <span class="rose-tap">TOCÁ LA ROSA</span>
+        </div>
+
+        <p class="detail-copy" id="rose-message">
+          Algunas cosas lindas no necesitan demasiadas palabras.
+        </p>
+        <button class="primary-button" onclick="bloomRose()">
+          <span>Abrir la rosa</span><span class="button-arrow">✦</span>
+        </button>
       </div>
+    </section>
 
-      <button class="random-button" onclick="randomSurprise()">
-        Sorprendeme ♡
-      </button>
 
+    <!-- REGALO -->
+    <section class="screen detail-screen" id="gift">
+      <header class="screen-header">
+        <button class="back-button" onclick="openScene('garden')">←</button>
+        <span class="header-label">UNA SORPRESA</span>
+        <span class="header-heart">♡</span>
+      </header>
+
+      <div class="detail-content gift-detail">
+        <p class="script-line">Esto es para vos</p>
+        <h2>Un pequeño<br><em>regalo</em></h2>
+
+        <div class="large-gift-wrap" onclick="openGift()">
+          <div class="gift-glow"></div>
+          <div class="large-gift" id="largeGift">
+            <div class="large-lid">
+              <div class="big-loop loop-left"></div>
+              <div class="big-loop loop-right"></div>
+              <div class="big-knot"></div>
+            </div>
+            <div class="large-box">
+              <div class="large-ribbon"></div>
+              <div class="box-front-shine"></div>
+            </div>
+          </div>
+          <div class="gift-content" id="giftContent">
+            <span class="gift-star">✦</span>
+            <span class="gift-message">Sos alguien muy especial.</span>
+            <span class="gift-heart">♡</span>
+          </div>
+        </div>
+
+        <p class="detail-copy" id="gift-instruction">
+          Hay algo esperando adentro.
+        </p>
+        <button class="primary-button" onclick="openGift()">
+          <span>Abrir regalo</span><span class="button-arrow">↗</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- CARTA -->
+    <section class="screen detail-screen" id="letter">
+      <header class="screen-header">
+        <button class="back-button" onclick="openScene('garden')">←</button>
+        <span class="header-label">UNAS PALABRAS</span>
+        <span class="header-heart">♡</span>
+      </header>
+
+      <div class="detail-content letter-detail">
+        <p class="script-line">De mí para vos</p>
+        <h2>Una carta<br><em>especial</em></h2>
+
+        <div class="letter-stage" id="letterStage">
+          <div class="open-envelope">
+            <div class="letter-inside">
+              <span class="letter-heading">Para Anyi</span>
+              <span class="letter-heart">♡</span>
+              <div class="letter-lines">
+                <i></i><i></i><i></i>
+              </div>
+            </div>
+            <div class="envelope-body"></div>
+            <div class="envelope-flap"></div>
+            <div class="letter-seal">♡</div>
+          </div>
+        </div>
+
+        <p class="detail-copy" id="letter-instruction">
+          Tocá el sobre para abrirlo.
+        </p>
+        <button class="primary-button" id="letterButton" onclick="openLetter()">
+          <span>Abrir carta</span><span class="button-arrow">♡</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- TEXTO DE LA CARTA -->
+    <section class="screen detail-screen" id="letter-reading">
+      <header class="screen-header">
+        <button class="back-button" onclick="openScene('letter')">←</button>
+        <span class="header-label">PARA ANYI</span>
+        <span class="header-heart">♡</span>
+      </header>
+
+      <div class="reading-wrap">
+        <article class="reading-paper">
+          <div class="paper-decoration">✧</div>
+          <p class="paper-kicker">CON CARIÑO</p>
+          <h2>Mi querida<br><em>Anyi</em></h2>
+          <div class="paper-divider">♡</div>
+
+          <p>
+            Quería tener un momento para decirte algo que quizás tendría
+            que haberte dicho antes.
+          </p>
+          <p>
+            Perdón si te hice sentir mal. No era lo que quería y no quiero
+            que pienses que no me importa.
+          </p>
+          <p>
+            Sos alguien especial y quería demostrarte que me importa
+            poder arreglar las cosas.
+          </p>
+          <p>
+            No espero que estas palabras solucionen todo, pero sí quería
+            que supieras que lo siento.
+          </p>
+
+          <div class="paper-signature">Para vos, con cariño ♡</div>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- SECRETO -->
+    <section class="screen detail-screen" id="secret">
+      <header class="screen-header">
+        <button class="back-button" onclick="openScene('garden')">←</button>
+        <span class="header-label">ALGO ESCONDIDO</span>
+        <span class="header-heart">♡</span>
+      </header>
+
+      <div class="detail-content secret-detail">
+        <p class="script-line">Psst...</p>
+        <h2>Encontraste<br><em>un secreto</em></h2>
+
+        <button class="secret-heart-button" id="secretHeart" onclick="revealSecret()">
+          <span class="secret-heart-shape">♥</span>
+          <span class="secret-pulse"></span>
+        </button>
+
+        <p class="detail-copy" id="secret-message">
+          Hay algo escondido acá. Tocá el corazón para descubrirlo.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- TODAVÍA NO -->
+    <section class="screen detail-screen" id="not-yet">
+      <header class="screen-header">
+        <button class="back-button" onclick="openScene('garden')">←</button>
+        <span class="header-label">NO HAY APURO</span>
+        <span class="header-heart">♡</span>
+      </header>
+
+      <div class="detail-content">
+        <div class="soft-heart">♡</div>
+        <p class="script-line">Está bien</p>
+        <h2>Podés tomarte<br><em>tu tiempo</em></h2>
+        <p class="detail-copy">
+          No quiero apurarte. Todavía tengo algunas sorpresas para mostrarte.
+        </p>
+        <button class="primary-button" onclick="openScene('garden')">
+          <span>Volver a las sorpresas</span><span class="button-arrow">↗</span>
+        </button>
+      </div>
     </section>
 
 
     <!-- FINAL -->
-
-    <section id="ending" class="screen">
-
-      <div class="celebration" id="celebration"></div>
-
+    <section class="screen" id="final">
+      <div class="final-glow"></div>
       <div class="final-content">
-
-        <div class="final-flower">🌷</div>
-
-        <span class="eyebrow">
-          PARA VOS, ANYI
-        </span>
-
-        <h1>
-          Gracias,<br>
-          mi reina <span>♡</span>
-        </h1>
-
-        <div class="final-letter">
-
-          <p>
-            No quería dejar pasar la oportunidad
-            de pedirte perdón y recordarte
-            lo especial que sos.
-          </p>
-
-          <p>
-            Espero que esta pequeña sorpresa
-            te haya sacado una sonrisa.
-          </p>
-
-          <p class="signature">
-            Con cariño, para vos ♡
-          </p>
-
-        </div>
-
-        <div class="final-hearts">
-          ♡ ♡ ♡
-        </div>
-
+        <span class="final-sparkle">✧</span>
+        <p class="script-line">Un abrazo enorme</p>
+        <h1>Gracias,<br><em>mi reina</em></h1>
+        <div class="final-flower">✿</div>
+        <p>
+          Gracias por tomarte el tiempo de ver todo esto.
+          Espero que te haya sacado una sonrisa.
+        </p>
+        <div class="final-signature">Con cariño, para vos ♡</div>
+        <button class="text-button final-button" onclick="goHome()">
+          Volver al comienzo
+        </button>
       </div>
-
     </section>
 
   </main>
 
-
-  <!-- MOTOR 3D -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-  <!-- INTERACCIONES -->
-
   <script src="app.js"></script>
-
 </body>
-</html>
+                                             </html>
