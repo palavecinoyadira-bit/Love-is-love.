@@ -3,114 +3,298 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8e9ed">
 <title>El amor es amor ♡</title>
+
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;min-height:100vh;
- display:flex;align-items:center;justify-content:center;
- padding:20px;
- font-family:Georgia,serif;color:#fff0f3;
- background:radial-gradient(circle at top,#603044,#211522 65%,#100d15);
- overflow-x:hidden;
+ margin:0;color:#745365;
+ font-family:Georgia,serif;
+ background:linear-gradient(150deg,#fff8f2,#f8e6ed,#eee7f6);
+ min-height:100vh;
 }
-.card{
- width:100%;max-width:440px;text-align:center;
- padding:40px 25px;border:1px solid #ffffff30;
- border-radius:25px;background:#ffffff0c;
- box-shadow:0 20px 70px #0008;
- position:relative;z-index:2;
-}
-.small{letter-spacing:4px;color:#e9a0b7;font:11px Arial}
-h1{font-size:43px;font-weight:normal;margin:24px 0 15px}
-p{line-height:1.8;color:#ead9e0}
-button{
- border:0;border-radius:30px;padding:14px 25px;
- background:#e99ab4;color:#321522;
- font-size:15px;font-weight:bold;cursor:pointer;
- margin-top:18px;
-}
-button:active{transform:scale(.96)}
-#letter{
- display:none;margin-top:28px;padding-top:25px;
- border-top:1px solid #ffffff30;
- line-height:1.9;font-size:18px;
- animation:appear 1s ease;
-}
-#letter.show{display:block}
-#question{display:none;margin-top:25px}
-#question.show{display:block}
-.answer{display:inline-block;margin:5px}
-#result{margin-top:20px;color:#f4b4c8;font-size:18px}
-.heart{
- position:fixed;bottom:-30px;
- color:#ed9ab6;pointer-events:none;
+button{font-family:inherit;cursor:pointer}
+#particles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.spark{
+ position:absolute;bottom:-20px;
+ color:#d99bb4;opacity:0;
  animation:float linear infinite;
 }
 @keyframes float{
- 0%{transform:translateY(0);opacity:0}
- 15%{opacity:.7}
- 100%{transform:translateY(-110vh) rotate(35deg);opacity:0}
+ 10%{opacity:.65}
+ 100%{transform:translateY(-110vh) rotate(180deg);opacity:0}
+}
+header{
+ text-align:center;padding:24px 12px 10px;
+ position:relative;z-index:1;
+}
+.brand{font-size:13px;letter-spacing:4px;color:#ad8198}
+h1{font-size:clamp(38px,9vw,65px);font-weight:normal;margin:16px 0;color:#a56e87}
+.subtitle{font-size:15px;line-height:1.8;color:#977d8c}
+main{max-width:850px;margin:auto;padding:15px 17px 60px;position:relative;z-index:1}
+.garden{
+ position:relative;text-align:center;
+ padding:30px 18px 35px;
+ border:1px solid #ffffff;
+ border-radius:30px;
+ background:linear-gradient(145deg,#ffffffa8,#f7e6edbd);
+ box-shadow:0 15px 50px #bd91a522;
+}
+.arch{
+ margin:5px auto 20px;
+ width:min(100%,390px);height:200px;
+ border-radius:180px 180px 25px 25px;
+ border:4px solid #d7b9c7;
+ border-bottom:0;
+ background:
+ radial-gradient(circle at 20% 30%,#fff8 0 3px,transparent 5px),
+ radial-gradient(circle at 75% 55%,#fff9 0 3px,transparent 5px),
+ linear-gradient(145deg,#d9e8d7,#f6dfe9 55%,#e8dff1);
+ display:flex;align-items:center;justify-content:center;
+ position:relative;
+}
+.arch:before{
+ content:"✿  ♡  ✿";
+ position:absolute;top:-18px;color:#a77d91;
+ font-size:27px;letter-spacing:8px;
+}
+.arch-inner{font-size:60px;filter:drop-shadow(0 5px 8px #ad809455)}
+.garden h2{font-size:29px;font-weight:normal;color:#a56e87}
+.garden p{line-height:1.8;font-size:15px}
+.btn{
+ border:1px solid #e4c1d0;
+ border-radius:30px;padding:13px 22px;
+ background:#f3dce6;color:#875c73;
+ font-size:14px;transition:.2s;
+}
+.btn:hover{background:#eacbd9;transform:translateY(-2px)}
+.section-title{
+ text-align:center;font-size:27px;
+ font-weight:normal;color:#a56e87;
+ margin:42px 0 8px;
+}
+.section-desc{text-align:center;font-size:14px;color:#a48c9b;margin-bottom:22px}
+.grid{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;
+}
+.item{
+ border:1px solid #fff;background:#ffffffa8;
+ border-radius:20px;padding:20px 10px;
+ text-align:center;color:#866477;
+ box-shadow:0 8px 25px #bd91a512;
+ transition:.25s;
+}
+.item:active{transform:scale(.96)}
+.item .emoji{font-size:38px;display:block;margin-bottom:10px}
+.item strong{font-weight:normal;font-size:16px}
+.item small{display:block;margin-top:7px;color:#ad93a2;font-size:11px}
+.letter-list{display:grid;gap:12px}
+.envelope{
+ padding:17px;border-radius:17px;
+ background:#fff9f5;border:1px solid #e9d4dd;
+ display:flex;align-items:center;gap:15px;
+ text-align:left;color:#88687a;
+}
+.envelope .emoji{font-size:32px}
+.envelope strong{font-weight:normal;font-size:16px}
+.envelope small{display:block;margin-top:5px;color:#ad96a3}
+#modal{
+ display:none;position:fixed;inset:0;z-index:10;
+ background:#44313b99;backdrop-filter:blur(5px);
+ align-items:center;justify-content:center;padding:18px;
+}
+#modal.open{display:flex}
+.paper{
+ width:100%;max-width:440px;max-height:85vh;overflow:auto;
+ padding:30px 23px;border-radius:23px;
+ background:linear-gradient(145deg,#fffdf8,#fff0f3);
+ box-shadow:0 20px 70px #0003;
+ text-align:center;animation:appear .4s ease;
 }
 @keyframes appear{
  from{opacity:0;transform:translateY(15px)}
  to{opacity:1;transform:translateY(0)}
 }
+.paper h2{font-size:27px;font-weight:normal;color:#ad7890}
+.paper p{line-height:1.9;white-space:pre-line;font-size:16px;color:#806779}
+.close{margin-top:20px}
+footer{text-align:center;padding:35px 15px;color:#b18d9e;font-size:13px}
+#randomText{font-size:18px;line-height:1.8;min-height:75px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
+
 <body>
-<main class="card">
- <div class="small">UN MENSAJE PARA VOS</div>
- <h1>El amor<br>es amor ♡</h1>
+<div id="particles"></div>
+
+<header>
+ <div class="brand">UN PEQUEÑO MUNDO PARA VOS</div>
+ <h1>El amor es amor ♡</h1>
+ <div class="subtitle">Un lugar especial, hecho con cariño para Nadia.</div>
+</header>
+
+<main>
+<section class="garden">
+ <div class="arch">
+  <div class="arch-inner">🌷🦋</div>
+ </div>
+ <h2>Bienvenida, mi princesa</h2>
  <p>
- Hay cosas que no siempre sabemos cómo decir...
- y esta página es una pequeña forma de intentarlo.
+  Preparé este pequeño rincón para vos.<br>
+  Podés recorrerlo, descubrir sus secretos<br>
+  y abrir todo lo que encuentres.
  </p>
+ <button class="btn" onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'})">
+  Entrar al jardín ♡
+ </button>
+</section>
 
- <button onclick="openLetter()">Abrir mi carta ♡</button>
+<h2 class="section-title" id="explore">Un jardín de secretos</h2>
+<p class="section-desc">Hay pequeños detalles esperando que los descubras.</p>
 
- <div id="letter">
-  No sé si existen las palabras perfectas para explicar lo que alguien puede llegar a significar.
-  <br><br>
-  Pero sé que hay personas que hacen que los días sean diferentes, que aparecen en nuestros pensamientos sin avisar y que consiguen sacarnos una sonrisa incluso a la distancia.
-  <br><br>
-  Y vos sos una de esas personas.
-  <br><br>
-  No necesitaba una fecha especial para recordártelo. Simplemente quería que lo supieras.
-  <br><br>
-  <span style="color:#efa2bb">Con cariño, para vos. ♡</span>
- </div>
+<div class="grid">
+ <button class="item" onclick="showSecret(0)">
+  <span class="emoji">🌸</span>
+  <strong>Una flor para vos</strong>
+  <small>Tocá y descubrí</small>
+ </button>
+ <button class="item" onclick="showSecret(1)">
+  <span class="emoji">🦋</span>
+  <strong>Una mariposa</strong>
+  <small>¿Qué habrá traído?</small>
+ </button>
+ <button class="item" onclick="showSecret(2)">
+  <span class="emoji">🫙</span>
+  <strong>Una botella</strong>
+  <small>Un mensaje escondido</small>
+ </button>
+ <button class="item" onclick="showSecret(3)">
+  <span class="emoji">🎁</span>
+  <strong>Un pequeño regalo</strong>
+  <small>Abrí tu sorpresa</small>
+ </button>
+ <button class="item" onclick="showSecret(4)">
+  <span class="emoji">⭐</span>
+  <strong>Una estrella</strong>
+  <small>Un deseo para vos</small>
+ </button>
+ <button class="item" onclick="showSecret(5)">
+  <span class="emoji">📖</span>
+  <strong>Un pensamiento</strong>
+  <small>Algo que quiero decirte</small>
+ </button>
+</div>
 
- <div id="question">
-  <p>Y ahora quiero preguntarte algo...</p>
-  <h2 style="font-weight:normal">¿Te gustó esta sorpresa?</h2>
-  <button class="answer" onclick="answer(true)">Sí ♡</button>
-  <button class="answer" onclick="answer(false)">Muchísimo</button>
-  <div id="result"></div>
- </div>
+<h2 class="section-title">Cartitas para mi amor</h2>
+<p class="section-desc">Cada sobre guarda unas palabras diferentes.</p>
+
+<div class="letter-list">
+ <button class="envelope" onclick="openLetter(0)">
+  <span class="emoji">💌</span>
+  <span><strong>Una carta para mi princesa</strong><small>Unas palabras desde el corazón</small></span>
+ </button>
+ <button class="envelope" onclick="openLetter(1)">
+  <span class="emoji">🌷</span>
+  <span><strong>Quiero que sepas algo</strong><small>Porque hay cosas que merecen decirse</small></span>
+ </button>
+ <button class="envelope" onclick="openLetter(2)">
+  <span class="emoji">🩷</span>
+  <span><strong>Cuando me extrañes</strong><small>Para esos momentos especiales</small></span>
+ </button>
+ <button class="envelope" onclick="openLetter(3)">
+  <span class="emoji">🕊️</span>
+  <span><strong>Una carta sin motivo</strong><small>Simplemente porque sí</small></span>
+ </button>
+</div>
+
+<h2 class="section-title">Un mensaje para vos</h2>
+<p class="section-desc">Cada vez que quieras, podés recibir uno diferente.</p>
+
+<section class="garden">
+ <div style="font-size:40px">🎀</div>
+ <p id="randomText">Tengo algo bonito que decirte...</p>
+ <button class="btn" onclick="randomMessage()">Dame otro mensajito ♡</button>
+</section>
+
+<footer>
+ Hecho con cariño para Nadia ♡<br>
+ <span style="font-size:11px">El amor es amor</span>
+</footer>
 </main>
 
+<div id="modal" onclick="if(event.target===this)closeModal()">
+ <div class="paper">
+  <div style="font-size:36px" id="modalEmoji">💌</div>
+  <h2 id="modalTitle"></h2>
+  <p id="modalText"></p>
+  <button class="btn close" onclick="closeModal()">Guardar en mi corazón ♡</button>
+ </div>
+</div>
+
 <script>
-function openLetter(){
- document.getElementById('letter').classList.add('show');
- document.getElementById('question').classList.add('show');
- document.querySelector('main button').style.display='none';
+const messages=[
+ "Mi amor, espero que hoy tengas muchos motivos para sonreír. Y si no los tenés, ojalá estas palabras puedan regalarte uno.",
+ "Mi princesa, nunca olvides lo especial que sos. No necesitás hacer nada extraordinario para merecer cariño.",
+ "Amor, a veces simplemente pienso en vos y me dan ganas de recordarte lo mucho que te quiero.",
+ "Nadia, ojalá pudiera regalarte un poquito de toda la ternura que me nace cuando pienso en vos.",
+ "Mi amor, me gusta saber que existís y que puedo compartir con vos pequeños momentos.",
+ "Si hoy fue un día difícil, recordá que también merecés descansar, recibir cariño y sentirte querida.",
+ "Mi princesa, no hace falta una ocasión especial para decirte que sos importante para mí.",
+ "Amor, si pudiera elegir un pequeño detalle para regalarte hoy, sería una sonrisa que te dure todo el día."
+];
+
+const secrets=[
+ ["🌸","Una flor para vos","Mi princesa, si cada flor pudiera representar una cosa bonita de vos, este jardín nunca tendría espacio suficiente."],
+ ["🦋","Un mensaje de la mariposa","Vengo a recordarte algo: hay alguien que piensa en vos incluso en los momentos más inesperados. ♡"],
+ ["🫙","Un mensaje embotellado","Para Nadia: guardá este mensajito para cuando necesites recordar que sos querida. No tenés que ganarte el cariño de nadie."],
+ ["🎁","Un regalo pequeño","Mi regalo para vos hoy es este recordatorio: merecés cosas bonitas, momentos tranquilos y muchísimo cariño."],
+ ["⭐","Un deseo","Deseo que nunca te falten razones para sonreír, personas que te cuiden y momentos en los que te sientas feliz."],
+ ["📖","Un pensamiento","A veces no hay nada complicado detrás de querer a alguien. Simplemente te importa, te nace cuidarlo y querés que esté bien."]
+];
+
+const letters=[
+ ["Para mi princesa","Mi amor:\n\nQuería dejarte unas palabras que pudieras leer cuando quisieras.\n\nMe gusta tenerte presente, pensar en vos y encontrar pequeñas razones para recordarte cuánto te quiero.\n\nNo siempre voy a encontrar la forma perfecta de expresar lo que siento, pero eso no significa que no tenga muchas cosas bonitas para decirte.\n\nEspero que nunca dudes de lo especial que sos para mí.\n\nCon muchísimo cariño, para vos. ♡"],
+ ["Quiero que sepas algo","Nadia:\n\nQuiero que sepas que no necesitás tener un día perfecto, estar siempre feliz ni tener todo resuelto.\n\nPodés tener días buenos y días difíciles. Podés equivocarte, cansarte o simplemente no tener ganas de nada.\n\nEso no cambia lo mucho que valés ni el cariño que merecés.\n\nTe quiero también en tus días normales, en esos en los que no pasa absolutamente nada especial."],
+ ["Cuando me extrañes","Mi amor:\n\nSi llegaste a esta carta porque me extrañás, quiero que te tomes un momento para sonreír.\n\nImaginá que te estoy dando un abrazo de esos que no necesitan explicaciones.\n\nAunque no siempre podamos estar cerca, quiero que recuerdes que hay alguien que te lleva presente y que desea verte bien.\n\nTe mando un montón de cariño, mi princesa. ♡"],
+ ["Una carta sin motivo","Hola, amor:\n\nNo hay una fecha especial, no pasó nada extraordinario y tampoco tengo un motivo complicado para escribirte.\n\nSimplemente quería recordarte que te quiero.\n\nA veces las cosas más lindas son las que hacemos porque sí, sin esperar una ocasión para demostrar cariño.\n\nAsí que esta carta es eso: un pequeño porque sí, para vos."]
+];
+
+function showModal(emoji,title,text){
+ document.getElementById('modalEmoji').textContent=emoji;
+ document.getElementById('modalTitle').textContent=title;
+ document.getElementById('modalText').textContent=text;
+ document.getElementById('modal').classList.add('open');
 }
-function answer(value){
- document.getElementById('result').textContent=
- value ? 'Me alegra que te haya gustado ♡' :
- 'Entonces misión cumplida. ♡';
+function closeModal(){
+ document.getElementById('modal').classList.remove('open');
 }
-for(let i=0;i<22;i++){
- let h=document.createElement('div');
- h.className='heart';
- h.textContent=Math.random()>.5?'♥':'♡';
- h.style.left=Math.random()*100+'%';
- h.style.fontSize=(12+Math.random()*20)+'px';
- h.style.animationDuration=(8+Math.random()*12)+'s';
- h.style.animationDelay=(-Math.random()*15)+'s';
- document.body.appendChild(h);
+function showSecret(i){
+ const s=secrets[i];
+ showModal(s[0],s[1],s[2]);
+}
+function openLetter(i){
+ const l=letters[i];
+ showModal("💌",l[0],l[1]);
+}
+let previous=-1;
+function randomMessage(){
+ let n;
+ do{n=Math.floor(Math.random()*messages.length)}
+ while(n===previous);
+ previous=n;
+ document.getElementById('randomText').textContent=messages[n];
+}
+for(let i=0;i<25;i++){
+ const s=document.createElement('span');
+ s.className='spark';
+ s.textContent=Math.random()>.5?'✧':'♡';
+ s.style.left=Math.random()*100+'%';
+ s.style.fontSize=(12+Math.random()*16)+'px';
+ s.style.animationDuration=(10+Math.random()*14)+'s';
+ s.style.animationDelay=(-Math.random()*20)+'s';
+ document.getElementById('particles').appendChild(s);
 }
 </script>
 </body>
