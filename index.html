@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El amor es amor ♡</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;
+ display:flex;align-items:center;justify-content:center;
+ padding:20px;
+ font-family:Georgia,serif;color:#fff0f3;
+ background:radial-gradient(circle at top,#603044,#211522 65%,#100d15);
+ overflow-x:hidden;
+}
+.card{
+ width:100%;max-width:440px;text-align:center;
+ padding:40px 25px;border:1px solid #ffffff30;
+ border-radius:25px;background:#ffffff0c;
+ box-shadow:0 20px 70px #0008;
+ position:relative;z-index:2;
+}
+.small{letter-spacing:4px;color:#e9a0b7;font:11px Arial}
+h1{font-size:43px;font-weight:normal;margin:24px 0 15px}
+p{line-height:1.8;color:#ead9e0}
+button{
+ border:0;border-radius:30px;padding:14px 25px;
+ background:#e99ab4;color:#321522;
+ font-size:15px;font-weight:bold;cursor:pointer;
+ margin-top:18px;
+}
+button:active{transform:scale(.96)}
+#letter{
+ display:none;margin-top:28px;padding-top:25px;
+ border-top:1px solid #ffffff30;
+ line-height:1.9;font-size:18px;
+ animation:appear 1s ease;
+}
+#letter.show{display:block}
+#question{display:none;margin-top:25px}
+#question.show{display:block}
+.answer{display:inline-block;margin:5px}
+#result{margin-top:20px;color:#f4b4c8;font-size:18px}
+.heart{
+ position:fixed;bottom:-30px;
+ color:#ed9ab6;pointer-events:none;
+ animation:float linear infinite;
+}
+@keyframes float{
+ 0%{transform:translateY(0);opacity:0}
+ 15%{opacity:.7}
+ 100%{transform:translateY(-110vh) rotate(35deg);opacity:0}
+}
+@keyframes appear{
+ from{opacity:0;transform:translateY(15px)}
+ to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+<main class="card">
+ <div class="small">UN MENSAJE PARA VOS</div>
+ <h1>El amor<br>es amor ♡</h1>
+ <p>
+ Hay cosas que no siempre sabemos cómo decir...
+ y esta página es una pequeña forma de intentarlo.
+ </p>
+
+ <button onclick="openLetter()">Abrir mi carta ♡</button>
+
+ <div id="letter">
+  No sé si existen las palabras perfectas para explicar lo que alguien puede llegar a significar.
+  <br><br>
+  Pero sé que hay personas que hacen que los días sean diferentes, que aparecen en nuestros pensamientos sin avisar y que consiguen sacarnos una sonrisa incluso a la distancia.
+  <br><br>
+  Y vos sos una de esas personas.
+  <br><br>
+  No necesitaba una fecha especial para recordártelo. Simplemente quería que lo supieras.
+  <br><br>
+  <span style="color:#efa2bb">Con cariño, para vos. ♡</span>
+ </div>
+
+ <div id="question">
+  <p>Y ahora quiero preguntarte algo...</p>
+  <h2 style="font-weight:normal">¿Te gustó esta sorpresa?</h2>
+  <button class="answer" onclick="answer(true)">Sí ♡</button>
+  <button class="answer" onclick="answer(false)">Muchísimo</button>
+  <div id="result"></div>
+ </div>
+</main>
+
+<script>
+function openLetter(){
+ document.getElementById('letter').classList.add('show');
+ document.getElementById('question').classList.add('show');
+ document.querySelector('main button').style.display='none';
+}
+function answer(value){
+ document.getElementById('result').textContent=
+ value ? 'Me alegra que te haya gustado ♡' :
+ 'Entonces misión cumplida. ♡';
+}
+for(let i=0;i<22;i++){
+ let h=document.createElement('div');
+ h.className='heart';
+ h.textContent=Math.random()>.5?'♥':'♡';
+ h.style.left=Math.random()*100+'%';
+ h.style.fontSize=(12+Math.random()*20)+'px';
+ h.style.animationDuration=(8+Math.random()*12)+'s';
+ h.style.animationDelay=(-Math.random()*15)+'s';
+ document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
